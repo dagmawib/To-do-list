@@ -7,6 +7,11 @@
     <title>Template</title>
 </head>
 <body>
-    <h1>Its a <%=dayType%>!  and today is  <%=dayToday%> </h1>
+    <% if (dayType === "weekend") { %>
+        <h1 style="background-color: aquamarine;">Its a <%=dayType%>!  and today is  <%=dayToday%> </h1>
+    <% }else{%>
+        <h1 style="background-color: brown;">Its a <%=dayType%>!  and today is  <%=dayToday%> </h1>
+    <%} %>
+    
 </body>
 </html>
