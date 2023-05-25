@@ -14,39 +14,30 @@ app.listen(port, (req, res)=>{
 })
 
 app.get("/", (req, res)=>{
-    const todayIndex = new Date()
-    var dayToday = ""
+    const today = new Date()
 
-    switch (new Date().getDay()) {
-        case 0:
-        dayToday = "Sunday";
-          break;
-        case 1:
-        dayToday = "Monday";
-          break;
-        case 2:
-        dayToday = "Tuesday";
-          break;
-        case 3:
-        dayToday = "Wednesday";
-          break;
-        case 4:
-        dayToday = "Thursday";
-          break;
-        case 5:
-        dayToday = "Friday";
-          break;
-        case 6:
-        dayToday = "Saturday";
-      }
+    var options = {
+      weekday: 'long',
+      month: 'long',
+      day: 'numeric' 
+    }
+
+    var formattedDay = (today.toLocaleDateString("en-US", options))
+
+    res.render("list.ejs", {htmldayplaceholder: formattedDay})
+
+
+
 
     var dayType = ""
     
-    if(todayIndex==0 || todayIndex==6){
-        dayType = "weekend"
-    }else{
-        dayType = "week day"
-    }
+    // if(todayIndex==0 || todayIndex==6){
+    //     dayType = "weekend"
+    // }else{
+    //     dayType = "week day"
+    // }
 
-    res.render('list.ejs', {dayToday: dayToday, dayType:dayType})
+
+    // render the ejs file in the views directory
+    // res.render('list.ejs', {dayToday: today.weekday, dayType:dayType})
 })
