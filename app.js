@@ -28,5 +28,6 @@ app.get("/", (req, res)=>{
 })
 
 app.post('/', (req, res)=>{
-  console.log(req.body.taskInput)
+  var taskInput = (req.body.taskInput)
+  res.render("list.ejs", {newInputEJSPlaceholder: taskInput})
 })
