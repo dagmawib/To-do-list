@@ -13,6 +13,8 @@ app.listen(port, (req, res)=>{
     console.log("Server listening on port "+port)
 })
 
+var taskInput = ""
+
 app.get("/", (req, res)=>{
     const today = new Date()
 
@@ -24,10 +26,11 @@ app.get("/", (req, res)=>{
 
     var formattedDay = (today.toLocaleDateString("en-US", options))
 
-    res.render("list.ejs", {htmldayplaceholder: formattedDay})
+    res.render("list.ejs", {htmldayplaceholder: formattedDay, newListItem: taskInput})
+
 })
 
 app.post('/', (req, res)=>{
-  var taskInput = (req.body.taskInput)
-  console.log(taskInput)
+  taskInput = (req.body.taskInput)
+  res.redirect("/")
 })
