@@ -26,3 +26,7 @@ app.get("/", (req, res)=>{
 
     res.render("list.ejs", {htmldayplaceholder: formattedDay})
 })
+
+app.post('/', (req, res)=>{
+  console.log(bodyParser.req.taskInput)
+})
