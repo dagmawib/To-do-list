@@ -28,5 +28,5 @@ app.get("/", (req, res)=>{
 })
 
 app.post('/', (req, res)=>{
-  console.log(bodyParser.req.taskInput)
+  console.log(req.body.taskInput)
 })
