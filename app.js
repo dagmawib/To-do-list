@@ -25,19 +25,4 @@ app.get("/", (req, res)=>{
     var formattedDay = (today.toLocaleDateString("en-US", options))
 
     res.render("list.ejs", {htmldayplaceholder: formattedDay})
-
-
-
-
-    var dayType = ""
-    
-    // if(todayIndex==0 || todayIndex==6){
-    //     dayType = "weekend"
-    // }else{
-    //     dayType = "week day"
-    // }
-
-
-    // render the ejs file in the views directory
-    // res.render('list.ejs', {dayToday: today.weekday, dayType:dayType})
 })
