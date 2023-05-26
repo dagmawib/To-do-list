@@ -13,14 +13,13 @@
     </div>
 
     <div class="box" >
-        
-        <di class="item">
-            <input type="checkbox" >
-            <% for(let i = 0; i<taskInput.length; i++){ %>
-                <p><%= taskInput[i] %></p>
-             <%}%>
-        </div>
             
+            <% for(let i = 0; i<taskInput.length; i++){ %>
+                <div class="item">
+                    <input type="checkbox" >
+                    <p><%= taskInput[i] %></p>
+                </div>
+             <%}%>
         
 
         <form action="/" method="post">

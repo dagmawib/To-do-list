@@ -16,7 +16,7 @@ app.listen(port, (req, res)=>{
     console.log("Server listening on port "+port)
 })
 
-var tasks = []
+var tasks = ["Demo Task", "Demo Task"]
 
 app.get("/", (req, res)=>{
   var today = new Date()
