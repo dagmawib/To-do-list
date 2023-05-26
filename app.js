@@ -17,6 +17,7 @@ app.listen(port, (req, res)=>{
 })
 
 var tasks = ["Demo Task", "Demo Task"]
+var workTasks = []
 
 app.get("/", (req, res)=>{
   var today = new Date()
@@ -28,11 +29,35 @@ app.get("/", (req, res)=>{
   }
 
   var formattedDay = (today.toLocaleDateString("en-US", options))
-  res.render("list.ejs", {htmldayplaceholder: formattedDay , taskInput: tasks})
+  res.render("list.ejs", {listTitle: formattedDay , taskInput: tasks})
 })
 
 app.post('/', (req, res)=>{
-  taskInput = (req.body.taskInput)
-  tasks.push(taskInput)
-  res.redirect("/")
+  let task = (req.body.taskInput)
+  var whereDidTheRequestComeFrom = (req.body.list)
+  if(whereDidTheRequestComeFrom === "Work"){
+    workTasks.push(task)
+    res.redirect("/work")
+  }else{
+    tasks.push(task)
+    res.redirect("/")
+  }
+})
+
+app.get("/work", (req, res)=>{
+  res.render("list.ejs", {listTitle: "Work" , taskInput: workTasks})
+})
+
+app.post("/work", (req, res)=>{
+  let task = (req.body.taskInput)
+  var whereDidTheRequestComeFrom = (req.body.list)
+  if(whereDidTheRequestComeFrom === "Work"){
+    workTasks.push(task)
+    res.redirect("/work")
+  }else{
+    tasks.push(task)
+    res.redirect("/")
+  }
+
+  res.redirect("/work")
 })
