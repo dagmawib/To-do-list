@@ -10,15 +10,9 @@
     <h1><%= htmldayplaceholder %></h1>
 
     <ul>
-        <li>Buy Food</li>
-        <li>Cook Food</li>
-        <li>Eat Food</li>
-
-        <% for(let i = 0; i<newListItem.length; i++){ %>
-            <li> <%= newListItem[i] %> </li>
+        <% for(let i = 0; i<taskInput.length; i++){ %>
+           <li><%= taskInput[i] %></li>
         <%}%>
-
-
     </ul>
 
     <form action="/" method="post">
