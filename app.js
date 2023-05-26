@@ -9,6 +9,9 @@ app.set('view engine', 'ejs');
 //bodyparser use
 app.use(bodyParser.urlencoded({extended: true}))
 
+//static resources
+app.use(express.static("public"))
+
 app.listen(port, (req, res)=>{
     console.log("Server listening on port "+port)
 })
