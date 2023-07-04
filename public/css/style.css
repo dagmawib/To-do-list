@@ -36,7 +36,7 @@ h1 {
 
 input:checked+p {
   text-decoration: line-through;
-  text-decoration-color: #52b3f5;
+  text-decoration-color: red;
 }
 
 input[type="checkbox"] {
@@ -56,7 +56,7 @@ form {
   margin-left: 20px;
 }
 
-button {
+.buttonc {
   min-height: 50px;
   width: 50px;
   border-radius: 50%;
@@ -64,7 +64,13 @@ button {
   background-color: #52b3f5;
   color: #fff;
   font-size: 30px;
-  padding-bottom: 6px;
+  border-width: 0;
+}
+
+.buttond {
+  margin-left: auto;
+  color: #fff;
+  font-size: 20px;
   border-width: 0;
 }
 

@@ -1,44 +1,42 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Template</title>
-    <link rel="stylesheet" href="css/style.css">
+<%- include("header") -%>
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+    <body>
+        <div class="box" id="heading">
+            <h1>
+                <%= listTitle %>
+            </h1>
+        </div>
 
+        <div class="box">
 
-</head>
-<body>
-    <div class="box" id="heading">
-        <h1><%= listTitle %></h1>
-    </div>
-
-    <div class="box" >
-            
-            <% for(let i = 0; i<taskInput.length && taskInput[i] != "" ; i++){ %>
+            <% for(let i=0; i<taskInput.length && taskInput[i] !="" ; i++){ %>
                 <div class="item">
-                    <input type="checkbox" >
-                    <p><%= taskInput[i] %></p>
+                    <input type="checkbox">
+                    <p>
+                        <%= taskInput[i] %>
+                    </p>
+                    <form action="/delete" id="delete_<%= taskInput[i]%>" method="post">
+                        <input type="hidden" name="item" value="<%= taskInput[i] %>">
+                        <button
+                            onclick="event.preventDefault();confirm('do you want to delete?')?document.getElementById('delete_<%= taskInput[i]%>').submit():d"
+                            style="background-color: red;" class="buttond" type="submit" name="delete">
+                            Delete
+                        </button>
+                    </form>
                 </div>
-             <%}%>
-        
-
-        <form action= "/" method="post">
-            <input autocomplete="off" type="text" name="taskInput" placeholder="Input task">
-            <button type="submit" name="list" value=<%= listTitle %>>+</button>
-        </form>
+                <%}%>
 
 
-    </div>
-    
-</body>
+                    <form action="/" method="post">
+                        <input autocomplete="off" type="text" name="taskInput" placeholder="Input task">
+                        <button type="submit" class="buttonc" name="list" value=<%=listTitle %>>+</button>
+                    </form>
 
-<footer>
-    Made with ❤️ at home.
-</footer>
-</html>
+
+        </div>
+
+    </body>
+
+    <%- include("footer") -%>
+
+        </html>
